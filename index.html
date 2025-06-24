@@ -1,0 +1,60 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>単語暗記アプリ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader-screen">
+    <p style="font-size: 1.5rem;">問題ファイルを選んでください</p>
+    <label for="csvLoader" id="csvLoaderLabel">ファイルを選択</label>
+    <input type="file" id="csvLoader" accept=".csv" multiple style="display: none;" />
+  </div>
+
+  <div id="quiz-screen" style="display:none;">
+    <div id="top-bar">
+      <div id="question-number"></div>
+      <div id="timer">00:00.00</div>
+    </div>
+
+    <div id="quiz-area">
+      <div id="mistake-icons">
+        <img src="batsu.png" class="mistake-icon" />
+        <img src="batsu.png" class="mistake-icon" />
+        <img src="batsu.png" class="mistake-icon" />
+      </div>
+
+      <div id="side-info">
+        <div id="category"></div>
+        <div id="subject"></div>
+        <div id="unit"></div>
+      </div>
+
+      <div id="question-container">
+        <div id="question-area"></div>
+
+        <div id="end-screen">
+          <div id="summary-info">
+            <div id="final-time"></div>
+            <div id="total-section-count"></div>
+          </div>
+          <button id="retry-button">もう一度はじめから</button>
+        </div>
+
+        <div id="answer-display"></div>
+        <div id="feedback-image"></div>
+      </div>
+    </div>
+
+    <div id="input-area">
+      <input type="text" id="answer-input" autocomplete="off" />
+    </div>
+  </div>
+
+  <audio id="correct-sound" src="Quiz-Ding_Dong02-2(Fast-Single).mp3"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
