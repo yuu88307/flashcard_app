@@ -7,15 +7,10 @@ https://yuu88307.github.io/flashcard_app/
 3Aから問題を入力
 
   A 問題番号[順番が安定](必要)
-  
   B 問題(必要)
-  
   C 回答(必要)
-  
   D 分類
-  
   E 教科
-  
   F 単元
   
 
