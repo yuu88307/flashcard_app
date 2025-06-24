@@ -2,7 +2,7 @@ https://yuu88307.github.io/flashcard_app/
 
 問題集のファイル構成(csv)
 
-1Aに問題集IDを入
+1Aに問題集IDを入力
 
 3Aから問題を入力
 
