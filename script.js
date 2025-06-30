@@ -144,19 +144,34 @@ function prepareSection(section) {
 }
 
 function showSectionIntro() {
-  stopTotalTimer();
+  // 表示内容の更新
   document.getElementById("question-area").textContent =
     `第${displaySection}セクション (${sectionQuestions.length}問)`;
+
   document.getElementById("question-number").textContent = "";
   document.getElementById("category").textContent = "";
   document.getElementById("subject").textContent = "";
   document.getElementById("unit").textContent = "";
   document.getElementById("answer-display").textContent = "";
+
   answerInput.value = "";
   answerInput.disabled = true;
   waitingForEnter = true;
+
+  // セクション表示されたのでカウンター進める
   displaySection++;
+
+  // クリックイベントを一時的に登録（重複登録防止）
+  const handleClick = () => {
+    if (waitingForEnter) {
+      waitingForEnter = false;
+      document.removeEventListener("click", handleClick);  // 自分で解除
+      showQuestion();
+    }
+  };
+  document.addEventListener("click", handleClick);
 }
+
 
 document.addEventListener("keydown", e => {
   if (e.key === "Enter" && waitingForEnter) {
@@ -165,12 +180,6 @@ document.addEventListener("keydown", e => {
   }
 });
 
-document.addEventListener("click", () => {
-  if (waitingForEnter) {
-    waitingForEnter = false;
-    showQuestion();
-  }
-});
 
 let emptySectionStreak = 0;
 
