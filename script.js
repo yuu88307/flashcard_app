@@ -165,6 +165,13 @@ document.addEventListener("keydown", e => {
   }
 });
 
+document.addEventListener("click", () => {
+  if (waitingForEnter) {
+    waitingForEnter = false;
+    showQuestion();
+  }
+});
+
 let emptySectionStreak = 0;
 
 function prepareNextNonEmptySection() {
