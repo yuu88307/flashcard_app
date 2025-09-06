@@ -13,6 +13,7 @@ let totalStartTime;
 let totalElapsedTime = 0;
 let totalTimerInterval;
 let isTimerRunning = false;
+let isRandomMode = false;
 
 const correctSound = document.getElementById("correct-sound");
 const answerInput = document.getElementById("answer-input");
@@ -21,8 +22,11 @@ const mistakeIcons = document.querySelectorAll(".mistake-icon");
 const loaderScreen = document.getElementById("loader-screen");
 const quizScreen = document.getElementById("quiz-screen");
 const endScreen = document.getElementById("end-screen");
+const randomModeCheckbox = document.getElementById("randomModeCheckbox");
 
 document.getElementById("csvLoader").addEventListener("change", function (e) {
+  isRandomMode = randomModeCheckbox.checked;
+  
   const files = Array.from(e.target.files);
   const readers = files.map(file => {
     return new Promise(resolve => {
@@ -127,7 +131,7 @@ function prepareSection(section) {
     const prevprevBcorrect = new Set(
       prevprev.filter(h => B_set.has(h.q.key) && h.incorrect < 3).map(h => h.q.key)
     );
-
+    
     A_set.clear();
     B_set.clear();
 
@@ -141,6 +145,18 @@ function prepareSection(section) {
   }
 
   currentIndex = 0;
+  // ランダム出題モードならシャッフル
+  if (isRandomMode && sectionQuestions.length > 1) {
+    shuffle(sectionQuestions);
+  }
+}
+
+// シャッフル関数を追加
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
 function showSectionIntro() {
@@ -318,3 +334,4 @@ answerInput.addEventListener("keydown", e => {
     }
   }
 });
+
