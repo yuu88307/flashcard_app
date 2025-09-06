@@ -93,6 +93,7 @@ body {
 #answer-display {
   font-size: 1.5rem;
   color: red;
+  z-index: 10;
 }
 
 #feedback-image {
@@ -163,3 +164,4 @@ input[type="text"] {
   color: #666;
   margin-top: 10px;
 }
+
