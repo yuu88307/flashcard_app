@@ -12,6 +12,14 @@
     <p style="font-size: 1.5rem;">問題ファイルを選んでください</p>
     <label for="csvLoader" id="csvLoaderLabel">ファイルを選択</label>
     <input type="file" id="csvLoader" accept=".csv" multiple style="display: none;" />
+
+  <!-- ランダム出題モード選択 -->
+    <div style="margin-top:20px;">
+      <label>
+        <input type="checkbox" id="randomModeCheckbox">
+        各セクションをランダム出題にする
+      </label>
+    </div>
   </div>
 
   <div id="quiz-screen" style="display:none;">
@@ -58,3 +66,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
