@@ -160,6 +160,9 @@ function shuffle(array) {
 }
 
 function showSectionIntro() {
+  
+    // タイマーを止める
+  stopTotalTimer();
   // 表示内容の更新
   document.getElementById("question-area").textContent =
     `第${displaySection}セクション (${sectionQuestions.length}問)`;
@@ -235,7 +238,10 @@ function showQuestion() {
     showSectionIntro();
     return;
   }
-
+  
+  // タイマーを再開
+  startTotalTimer();
+  
   const q = sectionQuestions[currentIndex];
   document.getElementById("question-number").textContent = `${q.id}-Q${q.num}`;
   document.getElementById("question-area").textContent = q.q;
@@ -334,4 +340,5 @@ answerInput.addEventListener("keydown", e => {
     }
   }
 });
+
 
