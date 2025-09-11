@@ -168,6 +168,7 @@ function showSectionIntro() {
     `第${displaySection}セクション (${sectionQuestions.length}問)`;
 
   document.getElementById("question-number").textContent = "";
+  document.getElementById("progress").textContent = "";
   document.getElementById("category").textContent = "";
   document.getElementById("subject").textContent = "";
   document.getElementById("unit").textContent = "";
@@ -241,6 +242,10 @@ function showQuestion() {
   
   // タイマーを再開
   startTotalTimer();
+
+  // 進行状況を更新
+  document.getElementById("progress").textContent =
+    `${currentIndex + 1} / ${sectionQuestions.length}`;
   
   const q = sectionQuestions[currentIndex];
   document.getElementById("question-number").textContent = `${q.id}-Q${q.num}`;
@@ -340,5 +345,6 @@ answerInput.addEventListener("keydown", e => {
     }
   }
 });
+
 
 
