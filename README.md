@@ -12,7 +12,6 @@ https://yuu88307.github.io/flashcard_app/
   D 分類
   E 教科
   F 単元
-  
 
 使用素材
 
