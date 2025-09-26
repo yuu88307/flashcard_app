@@ -1,0 +1,320 @@
+/* =========================
+   基本スタイル
+   ========================= */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  height: 100vh;
+  background-color: #f4f4f4;
+  color: #222;
+  overflow: hidden;
+}
+
+/* ダークモード */
+body.dark {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+/* =========================
+   トランジション管理
+   ========================= */
+body.transition-enabled,
+#loader-screen.transition-enabled,
+#settings-screen.transition-enabled,
+#quiz-screen.transition-enabled,
+input.transition-enabled,
+button.transition-enabled,
+#csvLoaderLabel.transition-enabled,
+#top-bar.transition-enabled,
+#input-area.transition-enabled {
+  transition: background-color 1s, color 1s, border-color 1s;
+}
+
+/* =========================
+   loader-screen
+   ========================= */
+#loader-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+}
+
+body.dark #loader-screen {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
+/* =========================
+   CSV選択ボタン
+   ========================= */
+#csvLoaderLabel {
+  font-size: 2rem;
+  padding: 30px 60px;
+  border-radius: 30px;
+  border: 2px solid #666;
+  background-color: white;
+  color: #222;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+#csvLoaderLabel:hover {
+  background-color: #e0e0e0;
+}
+
+body.dark #csvLoaderLabel {
+  background-color: #222;
+  color: #f5f5f5;
+  border: 2px solid #555;
+}
+
+body.dark #csvLoaderLabel:hover {
+  background-color: #444;
+}
+
+/* =========================
+   設定画面
+   ========================= */
+#settings-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 40px);
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 2;
+}
+
+#settings-screen input,
+#settings-screen button {
+  font-size: 1.3rem;
+  padding: 12px 25px;
+  margin: 10px;
+}
+
+/* =========================
+   ダークモード切替ボタン
+   ========================= */
+#dark-mode-toggle {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body:not(.dark) #dark-mode-toggle {
+  background-color: #007bff;
+  color: white;
+}
+
+body.dark #dark-mode-toggle {
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+#dark-mode-toggle:hover {
+  background-color: #0056b3;
+}
+
+/* =========================
+   トップバー
+   ========================= */
+
+/* ライトモードを明示（transition対応） */
+body:not(.dark) #top-bar,
+body.transition-enabled:not(.dark) #top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ccc;
+  background-color: #d1d1d1; /* ライトモード薄グレー */
+  color: #222;
+}
+
+/* ダークモード */
+body.dark #top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #555;
+  background-color: #222;
+  color: #868686;
+}
+
+/* トランジション */
+body.transition-enabled #top-bar {
+  transition: background-color 1s, color 1s, border-color 1s;
+}
+
+/* =========================
+   クイズ画面
+   ========================= */
+#quiz-area {
+  flex: 1;
+  position: relative;
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#category, #subject, #unit {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+#question-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 60px;
+  text-align: center;
+}
+
+#question-area {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 80px;
+  z-index: 2;
+}
+
+/* =========================
+   結果・フィードバック
+   ========================= */
+#end-screen {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+  z-index: 2;
+}
+
+#retry-button {
+  font-size: 1.5rem;
+  padding: 15px 40px;
+  border-radius: 10px;
+  border: 2px solid #666;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 2;
+}
+
+#retry-button:hover {
+  background-color: #eee;
+}
+
+#answer-display {
+  font-size: 1.5rem;
+  color: red;
+  z-index: 10;
+}
+
+#feedback-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;  
+  height: 70%;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8; 
+  transition: opacity 0.3s;
+}
+
+/* =========================
+   サイド情報
+   ========================= */
+#side-info {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  text-align: right;
+}
+
+/* =========================
+   入力欄
+   ========================= */
+#input-area {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  font-size: 2rem;
+  padding: 15px;
+  height: 65px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+body.dark #input-area,
+body.dark input[type="text"] {
+  background-color: #222;
+  color: #f5f5f5;
+  border: 1px solid #555;
+}
+
+/* =========================
+   間違いアイコン
+   ========================= */
+#mistake-icons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.mistake-icon {
+  width: 60px;
+  height: 60px;
+  opacity: 0.3;
+}
+
+.mistake-icon.active {
+  opacity: 1;
+}
+
+/* =========================
+   その他
+   ========================= */
+#summary-info {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 10px;
+}

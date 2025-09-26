@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>問題集作成アプリ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ダークモード切替ボタン -->
+<button id="dark-mode-toggle">🌙</button>
+
+<!-- 起動画面 -->
+<div id="startScreen" class="center-screen">
+  <button id="newBtn" class="big-btn">新規作成</button>
+  <button id="loadBtn" class="big-btn">読み込み</button>
+  <input type="file" id="fileInput" accept=".csv" class="hidden">
+    <!-- flashcard_appへのリンク -->
+  <div id="app-link" style="position:absolute; bottom:80px; right:40px;">
+    <a href="../index.html" 
+       style="font-size:1.5rem; padding:20px 40px; background:#007BFF; color:white; text-decoration:none; border-radius:10px; ">
+       暗記アプリはこちら
+    </a>
+  </div>
+</div>
+
+<!-- 画面① -->
+<div id="screen1" class="hidden">
+  <button id="backToStartBtn" class="fixed-btn">起動画面へ</button>
+  <input id="titleInput" placeholder="問題集タイトルを入力">
+  <div id="list"></div>
+  <div class="buttons">
+    <button id="addBtn">追加</button>
+    <button id="editBtn" disabled>編集</button>
+    <button id="deleteBtn" disabled>削除</button>
+    <button id="exportBtn">出力</button>
+    <button id="changeUpBtn">↑</button>
+    <button id="changeDownBtn">↓</button>
+  </div>
+</div>
+
+<!-- 画面② -->
+<div id="screen2" class="hidden">
+  <input id="numInput" placeholder="番号">
+  <input id="questionInput" class="textbox" placeholder="問題を入力">
+  <input id="answerInput" class="textbox" placeholder="回答を入力">
+  <div>
+    <input id="categoryInput" class="smallbox" placeholder="分類">
+    <input id="subjectInput" class="smallbox" placeholder="教科">
+    <input id="unitInput" class="smallbox" placeholder="単元">
+  </div>
+  <div class="buttons">
+    <button id="applyBtn">追加</button>
+    <button id="cancelBtn">×</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,27 +1,54 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>単語暗記アプリ</title>
-  <link rel="stylesheet" href="style.css" />
+  <!-- main配下のcssを読み込む -->
+  <link rel="stylesheet" href="main/style.css" />
 </head>
 <body>
+
+  <!-- ダークモード切替ボタン -->
+  <button id="dark-mode-toggle">🌙</button>
+
+  <!-- CSVファイル選択画面 -->
   <div id="loader-screen">
     <p style="font-size: 1.5rem;">問題ファイルを選んでください</p>
     <label for="csvLoader" id="csvLoaderLabel">ファイルを選択</label>
     <input type="file" id="csvLoader" accept=".csv" multiple style="display: none;" />
+  </div>
 
-  <!-- ランダム出題モード選択 -->
-    <div style="margin-top:20px;">
+  <!-- flashcard_makerへのリンク -->
+  <div id="maker-link" style="position:absolute; bottom:40px; right:40px;">
+    <a href="flashcard_maker/index.html" 
+       style="font-size:1.5rem; padding:20px 40px; background:#007BFF; color:white; text-decoration:none; border-radius:10px;">
+       単語帳作成はこちら
+    </a>
+  </div>
+
+
+
+  <!-- 設定画面 -->
+  <div id="settings-screen" style="display:none; text-align:center; margin-top:30px;">
+    <h2>設定</h2>
+    <div>
       <label>
         <input type="checkbox" id="randomModeCheckbox">
         各セクションをランダム出題にする
       </label>
     </div>
+    <div style="margin-top:15px;">
+      出題範囲:
+      <input type="number" id="startRange" style="width:60px;"> ～
+      <input type="number" id="endRange" style="width:60px;">
+    </div>
+    <div style="margin-top:20px;">
+      <button id="startQuizButton" style="font-size:1.2rem; padding:10px 25px;">開始</button>
+    </div>
   </div>
 
+  <!-- クイズ画面 -->
   <div id="quiz-screen" style="display:none;">
     <div id="top-bar">
       <div id="question-number"></div>
@@ -31,9 +58,9 @@
 
     <div id="quiz-area">
       <div id="mistake-icons">
-        <img src="batsu.png" class="mistake-icon" />
-        <img src="batsu.png" class="mistake-icon" />
-        <img src="batsu.png" class="mistake-icon" />
+        <img src="main/batsu.png" class="mistake-icon" />
+        <img src="main/batsu.png" class="mistake-icon" />
+        <img src="main/batsu.png" class="mistake-icon" />
       </div>
 
       <div id="side-info">
@@ -63,9 +90,7 @@
     </div>
   </div>
 
-  <audio id="correct-sound" src="Quiz-Ding_Dong02-2(Fast-Single).mp3"></audio>
-  <script src="script.js"></script>
+  <audio id="correct-sound" src="main/Quiz-Ding_Dong02-2(Fast-Single).mp3"></audio>
+  <script src="main/script.js"></script>
 </body>
 </html>
-
-

@@ -1,0 +1,220 @@
+/* 初期ロード時のチラつき防止 */
+* {
+  transition: none;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* スクロールを消す */
+}
+
+/* トランジション有効化（JS側で制御） */
+.transition-enabled,
+.transition-enabled * {
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* ライトモード（デフォルト） */
+body { 
+  font-family: sans-serif; 
+  margin: 20px; 
+  font-size: 18px;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* ダークモード */
+body.dark {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.hidden { display: none; }
+
+#titleInput {
+  font-size: 20px;
+  width: calc(100% - 120px);
+  margin-bottom: 15px;
+  padding: 5px;
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #ccc;
+}
+
+body.dark #titleInput {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+#list {
+  border: 1px solid #666;
+  height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  font-size: 18px;
+  background-color: #ffffff;
+}
+
+body.dark #list {
+  background-color: #2a2a2a;
+  border-color: #555;
+}
+
+#list div {
+  padding: 8px;
+  cursor: pointer;
+}
+
+#list div:hover {
+  background-color: #f5f5f5;
+}
+
+body.dark #list div:hover {
+  background-color: #3a3a3a;
+}
+
+#list div.selected {
+  background: #cce5ff;
+}
+
+body.dark #list div.selected {
+  background: #1e3a5f;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+.buttons button {
+  font-size: 18px;
+  padding: 8px 15px;
+  margin-right: 8px;
+  background-color: #f0f0f0;
+  color: #333333;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background-color: #e0e0e0;
+}
+
+.fixed-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 8px 12px;       /* 適度に大きく */
+  font-size: 14px;          /* 他ボタンとバランス */
+  z-index: 100;
+  border-radius: 5px;
+}
+
+.buttons button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+body.dark .buttons button {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+body.dark .buttons button:hover {
+  background-color: #4a4a4a;
+}
+
+body.dark .buttons button:disabled {
+  background-color: #2a2a2a;
+  color: #666;
+}
+
+.textbox, .smallbox, #numInput {
+  padding: 6px;
+  font-size: 18px;
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #ccc;
+}
+
+body.dark .textbox, body.dark .smallbox, body.dark #numInput {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+.textbox {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.smallbox {
+  width: 30%;
+  margin-right: 5px;
+}
+
+#numInput {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box; /* パディングを含めて高さ計算 */
+}
+
+.big-btn {
+  font-size: 2rem;
+  padding: 20px 50px;
+  margin: 15px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333333;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+.big-btn:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+body.dark .big-btn {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+/* ダークモード切替ボタン */
+#dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(5, 134, 255);
+  color: #cfcfcf;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.dark #dark-mode-toggle {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 2px 10px rgba(255,255,255,0.1);
+}
