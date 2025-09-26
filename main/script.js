@@ -10,7 +10,6 @@ let history = [];
 let totalStartTime;
 let totalElapsedTime = 0;
 let isTimerRunning = false;
-
 let isRandomMode = false;
 
 const correctSound = document.getElementById("correct-sound");
@@ -254,3 +253,4 @@ answerInput.addEventListener("keydown", e => {
     }
   }
 });
+
