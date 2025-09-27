@@ -224,12 +224,18 @@ deleteBtn.onclick = () => {
   markUnsaved();
 };
 
-// 出力時は保存済みにする
 exportBtn.onclick = () => {
   const title = titleInput.value.replace(/,/g, ""); 
-  const csv = [title, ""].concat(
-    data.map(d => [d.num, d.question, d.answer, d.category, d.subject, d.unit].join(","))
-  ).join("\n");
+  // タイトル行（末尾にカンマ5つ）
+  const titleLine = `${title},,,,,`;
+  // フリー行（カンマ6個で空欄埋め）
+  const freeLine = ",,,,,";
+  // データ部分
+  const body = data.map(d =>
+    [d.num, d.question, d.answer, d.category, d.subject, d.unit].join(",")
+  );
+
+  const csv = [titleLine, freeLine].concat(body).join("\n");
   const blob = new Blob([csv], { type: "text/csv" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -240,6 +246,7 @@ exportBtn.onclick = () => {
 
   isSaved = true; // 保存済みに設定
 };
+
 
 
 
@@ -286,7 +293,7 @@ document.getElementById("cancelBtn").onclick = () => {
     }
   } else {
     // 追加モード時は何か入力されていれば変更ありとみなす
-    if (numInput.value || qInput.value || aInput.value || cInput.value || sInput.value || uInput.value) {
+    if (qInput.value || aInput.value || cInput.value || sInput.value || uInput.value) {
       hasChanges = true;
     }
   }

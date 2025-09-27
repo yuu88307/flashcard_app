@@ -225,7 +225,7 @@ body.transition-enabled #top-bar {
 }
 
 #answer-display {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: red;
   z-index: 10;
 }
@@ -234,13 +234,13 @@ body.transition-enabled #top-bar {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 70%;  
-  height: 70%;
+  width: 340%;  
+  height: 340%;
   transform: translate(-50%, -50%);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.8; 
+  opacity: 0.6; 
   transition: opacity 0.3s;
 }
 
